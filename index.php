@@ -1,19 +1,5 @@
 <?php
-
-function generatePassword($length)
-{
-    $characters = "rewgvgsdfbaffgraedlfmajefvlanv@3r43t.324asdfergr";
-    $password = "";
-    for ($i = 0; $i < $length; $i++) {
-        $password .= $characters[rand(0, strlen($characters) - 1)];
-    }
-    return $password;
-}
-
-if (isset($_GET["password"])) {
-    $password_length = $_GET["password"];
-}
-
+include_once __DIR__ .  "./functions.php";
 ?>
 
 
@@ -49,9 +35,11 @@ if (isset($_GET["password"])) {
                     placeholder="Enter a number" id="password" name="password">
             </div>
         </form>
-        <?php if (isset($password_length)) {
-            echo generatePassword($password_length);
-        } ?>
+        <div class="bg-white">
+            <?php
+            echo stampPassword($password_length);
+            ?>
+        </div>
 
     </div>
 </body>

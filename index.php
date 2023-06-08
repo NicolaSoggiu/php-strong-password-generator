@@ -1,3 +1,22 @@
+<?php
+
+function generatePassword($length)
+{
+    $characters = "rewgvgsdfbaffgraedlfmajefvlanv@3r43t.324asdfergr";
+    $password = "";
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[rand(0, strlen($characters) - 1)];
+    }
+    return $password;
+}
+
+if (isset($_GET["password"])) {
+    $password_length = $_GET["password"];
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,22 +36,24 @@
     <div class="container text-center mt-5 d-flex flex-column align-items-center">
         <h1 class="text-secondary">Strong Password Generator</h1>
         <h2 class="text-light">Generate a secure password</h2>
-        <form class="bg-white d-flex justify-content-between w-75">
+        <form action="" method="get" class="bg-white d-flex justify-content-between w-75">
             <div class="mb-3 d-flex flex-column p-4">
-                <label for="exampleInputEmail1" class="form-label text-dark">Password length : </label>
+                <label for="password" class="form-label text-dark">Password length : </label>
                 <div class="mt-5">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                    <a href="" class="btn btn-secondary">Cancel</a>
+                    <button type="submit" name="password" class="btn btn-primary">Send</button>
+                    <a href="/php-strong-password-generator/" class="btn btn-secondary">Cancel</a>
                 </div>
             </div>
             <div class="p-2">
-                <input type="number" class="form-control w-50 mt-3" style="margin-right:150px" id="email" name="email">
+                <input type="number" class="form-control w-50 mt-3" style="margin-right:150px"
+                    placeholder="Enter a number" id="password" name="password">
             </div>
-
-
         </form>
-    </div>
+        <?php if (isset($password_length)) {
+            echo generatePassword($password_length);
+        } ?>
 
+    </div>
 </body>
 
 </html>

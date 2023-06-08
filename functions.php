@@ -20,7 +20,9 @@ if (isset($_GET["password"])) {
 // Function to stamp the password in html
 function stampPassword($password_length)
 {
-    if (isset($password_length)) {
-        echo generatePassword($password_length);
+    if (isset($_GET["password"]) && ($password_length != 0 && $password_length != "")) {
+        echo "Your random email is :" . " " . generatePassword($password_length);
+    } else if (isset($_GET["password"]) && ($password_length === 0 || $password_length === "")) {
+        echo "The entered value is not valid. Try again!";
     }
 }

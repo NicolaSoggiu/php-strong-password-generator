@@ -25,22 +25,54 @@ include_once __DIR__ .  "./functions.php";
         <form action="" method="get" class="bg-white d-flex justify-content-between w-75">
             <div class="mb-3 d-flex flex-column p-4">
                 <label for="password" class="form-label text-dark">Password length : </label>
-                <div class="mt-5">
+                <label for="password" class="form-label text-dark pt-2">Character repeat : </label>
+                <div style="margin-top:150px">
                     <button type="submit" name="password" class="btn btn-primary">Send</button>
                     <a href="/php-strong-password-generator/" class="btn btn-secondary">Cancel</a>
                 </div>
             </div>
-            <div class="p-2">
+            <div class="p-2 d-flex flex-column align-items-start">
                 <input type="number" class="form-control w-50 mt-3" style="margin-right:150px"
                     placeholder="Enter a number" id="password" name="password">
-            </div>
+                <div class="pt-2">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        Yes
+                    </label>
+                </div>
+                <div>
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                        No
+                    </label>
+                </div>
+                <div class=" mt-3 d-flex flex-column align-items-start">
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Letters
+                        </label>
+                    </div>
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Numbers
+                        </label>
+                    </div>
+                    <div>
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                            Symbols
+                        </label>
+                    </div>
+                </div>
         </form>
-        <div class="bg-white">
-            <?php
-            echo stampPassword($password_length);
-            ?>
-        </div>
 
+    </div>
+    <div class="container bg-white text-center d-flex flex-column align-items-center w-75"
+        style="max-width:fit-content">
+        <?= stampPassword($password_length);
+            ?>
     </div>
 </body>
 
